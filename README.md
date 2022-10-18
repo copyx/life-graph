@@ -9,7 +9,16 @@
 
 ## Features
 
+- [ ] 환경변수 분리
 - [ ] 습관 등록
+  - [ ] Create API
+  - [ ] UI
 - [ ] 습관 확인
+  - [ ] Read API
+  - [ ] UI
 - [ ] 습관 수정
+  - [ ] Update API
+  - [ ] UI
 - [ ] 습관 삭제
+  - [ ] Delete API
+  - [ ] UI
