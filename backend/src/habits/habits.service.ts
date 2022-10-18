@@ -1,11 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { CreateHabitDto } from './dto/create-habit.dto';
 import { UpdateHabitDto } from './dto/update-habit.dto';
 
 @Injectable()
 export class HabitsService {
-  create(createHabitDto: CreateHabitDto) {
-    return { id: 1, ...createHabitDto };
+  create(title: string) {
+    return { id: 1, title };
   }
 
   findAll() {

@@ -19,8 +19,9 @@ export class HabitsController {
   constructor(private readonly habitsService: HabitsService) {}
 
   @Post()
-  create(@Body() createHabitDto: CreateHabitDto) {
-    return this.habitsService.create(createHabitDto);
+  create(@Body() dto: CreateHabitDto) {
+    const { title } = dto;
+    return this.habitsService.create(title);
   }
 
   @HttpCode(200)

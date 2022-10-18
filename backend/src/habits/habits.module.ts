@@ -4,6 +4,6 @@ import { HabitsController } from './habits.controller';
 
 @Module({
   controllers: [HabitsController],
-  providers: [HabitsService]
+  providers: [HabitsService],
 })
 export class HabitsModule {}
