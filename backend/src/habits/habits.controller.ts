@@ -8,18 +8,32 @@ import {
   Delete,
   Res,
   HttpCode,
+  ParseIntPipe,
+  UsePipes,
 } from '@nestjs/common';
 import { HabitsService } from './habits.service';
 import { CreateHabitDto } from './dto/create-habit.dto';
 import { UpdateHabitDto } from './dto/update-habit.dto';
 import { Response } from 'express';
+import {
+  // JoiValidationPipe,
+  ValidationPipe,
+} from 'src/validation.pipe';
+// import * as Joi from 'joi';
 
 @Controller('habits')
 export class HabitsController {
   constructor(private readonly habitsService: HabitsService) {}
 
   @Post()
-  create(@Body() dto: CreateHabitDto) {
+  // @UsePipes(
+  //   new JoiValidationPipe(
+  //     Joi.object({
+  //       title: Joi.string(),
+  //     }),
+  //   ),
+  // )
+  create(@Body(new ValidationPipe()) dto: CreateHabitDto) {
     const { title } = dto;
     return this.habitsService.create(title);
   }
@@ -32,8 +46,8 @@ export class HabitsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.habitsService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.habitsService.findOne(id);
   }
 
   @Patch(':id')
